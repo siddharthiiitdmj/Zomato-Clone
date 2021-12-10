@@ -4,6 +4,9 @@ import cors from "cors";
 import helmet from "helmet";
 import MongoDB from "./database/connection";
 
+//Routes
+import Auth from "./API/Auth/index";
+
 const zomato = express();
 
 zomato.use(express.json());
@@ -14,6 +17,8 @@ zomato.use(helmet());
 zomato.get("/", (req, res) => {
     res.json({ message: "Success" });
 });
+
+zomato.use("/auth", Auth);
 
 zomato.listen(4000, () =>
     MongoDB()
