@@ -11,6 +11,8 @@ import googleAuthConfig from './config/google.config';
 
 //Routes
 import Auth from "./API/Auth/index";
+import Restaurant from "./API/Restaurant/index";
+import Food from "./API/Food/index";
 
 googleAuthConfig(passport);
 
@@ -28,7 +30,8 @@ zomato.get("/", (req, res) => {
 });
 
 zomato.use("/auth", Auth);
-// zomato.use("/restaurant", Restaurant);
+zomato.use("/restaurant", Restaurant);
+zomato.use("/food", Food);
 
 zomato.listen(4000, () =>
     MongoDB()
